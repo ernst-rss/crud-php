@@ -1,6 +1,18 @@
 <?php
-    $placeholder_user = "Place Holder User";
-    $placeholder_id = "1";
+    include 'config.php';
+
+    $sql = "SELECT *  FROM users where current_login = 1";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $first_row = $result->fetch_assoc();
+    }
+    else {
+        header("Location: log_in.php");
+        $conn->close();
+        exit;
+    }
+    $conn->close();
 ?>
 
 <html>
@@ -12,16 +24,13 @@
 
     </head>
     <body>
-        
         <div class="container">
             <div class="row">
-                <h1>Welcome Back! <?php echo $placeholder_user ?></h1>
-                <button type="button" class="btn btn-primary m-3" value="<?php echo $placeholder_id ?>">Manage Account</button>
-                <button type="button" class="btn btn-primary m-3" value="<?php echo $placeholder_id ?>">Log out</button>
+                <h1>Welcome Back! <?php echo $first_row["username"] ?></h1>
+                <button type="button" class="btn btn-primary m-3">Manage Account</button>
+                <a href="log_in.php" class="btn btn-primary m-3">Log out</a>
             </div>
         </div>
-
-
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

@@ -1,4 +1,10 @@
 <?php
+    include 'config.php';
+
+    $sql = "UPDATE users SET current_login = '0' WHERE id > 0";
+    $result = $conn->query($sql);
+    $conn->close();
+
 
 ?>
 
@@ -13,20 +19,22 @@
     <body>
         
         <div class="container">
-            <div class="row m-3 p-3">
-                <label class="col-md-3">Username</label>
-                <input type="text" class="col-md-9">
-            </div>
+            <form method="post" action="update.php">
+                <div class="row m-3 p-3">
+                    <label class="col-md-3">Username</label>
+                    <input type="text" name="username" class="col-md-9" required>
+                </div>
 
-            <div class="row m-3 p-3">
-                <label class="col-md-3">Password</label>
-                <input type="password" class="col-md-9">
-            </div>
+                <div class="row m-3 p-3">
+                    <label class="col-md-3">Password</label>
+                    <input type="password" name="password" class="col-md-9" required>
+                </div>
 
-            <div class="row">
-                <button type="button" class="btn btn-primary m-3">Log in</button>
-                <button type="button" class="btn btn-primary m-3">Sign Up</button>
-            </div>
+                <div class="row">
+                    <button type="submit" name="action" value="login" class="btn btn-primary m-3">Log in</button>
+                    <button type="submit" name="action" value="signup" class="btn btn-primary m-3">Sign Up</button>
+                </div>
+            </form>
         </div>
 
 
