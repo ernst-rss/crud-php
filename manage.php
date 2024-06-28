@@ -1,4 +1,7 @@
 <?php
+    include 'config.php';
+    include 'check_login.php';
+
     $username = "Placeholder";
     $placeholder_id = "1";
 ?>
@@ -12,25 +15,23 @@
 
     </head>
     <body>
-        <input type="hidden" value="<?php echo $placeholder_id?>">    
-
         <div class="container">
-            <div class="row m-3 p-3">
-                <label class="col-md-3">Username</label>
-                <input type="text" class="col-md-9" value="<?php echo $username ?>">
-            </div>
+            <form method="post" action="update.php">
+                <div class="row m-3 p-3">
+                    <label class="col-md-3">Username</label>
+                    <input type="text" name="username" class="col-md-9" value="<?php echo $first_row["username"] ?>" required> 
+                </div>
 
-            <div class="row m-3 p-3">
-                <label class="col-md-3">Password</label>
-                <input type="password" class="col-md-9">
-            </div>
+                <div class="row m-3 p-3">
+                    <label class="col-md-3">Password</label>
+                    <input type="password" name="password" class="col-md-9" value="<?php echo $first_row["password"] ?>" required>
+                </div>
 
-            <div class="row">  
-
-                <button type="button" class="btn btn-primary m-3">Terminate</button>
-                <button type="button" class="btn btn-primary m-3">Save</button>
-            </div>
-        </div>
+                <div class="row">
+                    <button type="submit" name="action" value="update" class="btn btn-primary m-3">Save</button>
+                    <button type="submit" name="action" value="delete" class="btn btn-primary m-3">Terminate</button>
+                </div>
+            </form>
 
 
 

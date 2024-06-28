@@ -19,7 +19,7 @@
     <body>
         
         <div class="container">
-            <form method="post" action="update.php">
+            <form method="post" action="auth.php">
                 <div class="row m-3 p-3">
                     <label class="col-md-3">Username</label>
                     <input type="text" name="username" class="col-md-9" required>

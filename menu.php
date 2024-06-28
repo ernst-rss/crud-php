@@ -1,18 +1,8 @@
 <?php
     include 'config.php';
-
-    $sql = "SELECT *  FROM users where current_login = 1";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        $first_row = $result->fetch_assoc();
-    }
-    else {
-        header("Location: log_in.php");
-        $conn->close();
-        exit;
-    }
-    $conn->close();
+    include 'check_login.php';
+    
+    
 ?>
 
 <html>
@@ -27,7 +17,7 @@
         <div class="container">
             <div class="row">
                 <h1>Welcome Back! <?php echo $first_row["username"] ?></h1>
-                <button type="button" class="btn btn-primary m-3">Manage Account</button>
+                <a href="manage.php" class="btn btn-primary m-3">Manage Account</a>
                 <a href="log_in.php" class="btn btn-primary m-3">Log out</a>
             </div>
         </div>
